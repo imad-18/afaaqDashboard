@@ -4,14 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Admin {
@@ -22,4 +18,14 @@ public class Admin {
     private String name;
     private String email;
     private String password;
+
+    // Constructors
+    public Admin() {}
+
+    public Admin(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
 }
