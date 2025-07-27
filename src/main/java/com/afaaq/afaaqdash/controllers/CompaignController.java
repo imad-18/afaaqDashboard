@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -33,4 +34,11 @@ public class CompaignController {
         System.out.println("deleted successfully: " + id);
         return deletedCompaign;
     }*/
+
+    // Get all compaigns
+    @GetMapping("/compaigns")
+    public List<Compaign> getAllCompaigns() {
+        List<Compaign> myCompaigns = compaignService.getCompaigns();
+        return myCompaigns;
+    }
 }
