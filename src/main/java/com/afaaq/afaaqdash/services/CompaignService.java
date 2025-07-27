@@ -49,4 +49,15 @@ public class CompaignService {
         return compaignRepo.findByTitle(name);
     }
 
+    // Update compaign
+    public Compaign updateCompaign(Compaign dd){
+        Compaign compaign = compaignRepo.findById(dd.getId()).get();
+
+        compaign.setTitle(dd.getTitle());
+        compaign.setDescription(dd.getDescription());
+        compaign.setImagesPath(dd.getImagesPath());
+
+        return compaignRepo.save(compaign);
+    }
+
 }
