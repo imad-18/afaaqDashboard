@@ -41,4 +41,11 @@ public class CompaignController {
         List<Compaign> myCompaigns = compaignService.getCompaigns();
         return myCompaigns;
     }
+
+    // Get compaign by name
+    @GetMapping("/compaign/{name}")
+    public List<Compaign> getCompaignsByName(@PathVariable String name) {
+        List<Compaign> myCompaigns = compaignService.getCompaignByName(name);
+        return myCompaigns;
+    }
 }

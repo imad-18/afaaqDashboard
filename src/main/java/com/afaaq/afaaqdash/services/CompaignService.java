@@ -44,4 +44,9 @@ public class CompaignService {
         return compaignRepo.findAll();
     }
 
+    // Get compaign by name
+    public List<Compaign> getCompaignByName(String name){
+        return compaignRepo.findByTitle(name);
+    }
+
 }
