@@ -49,10 +49,6 @@ public class CompaignController {
         return myCompaigns;
     }
 
-    // Update compaign
-    @PutMapping("/compaign/{id}")
-    public Compaign updateCompaign(@PathVariable int id, @RequestBody Compaign compaign) {
-        return compaignService.updateCompaign(compaign);
-    }
+
 
 }
