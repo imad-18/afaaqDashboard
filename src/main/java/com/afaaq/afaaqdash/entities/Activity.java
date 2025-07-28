@@ -35,7 +35,7 @@ public class Activity {
 
     private LocalDate launchDate;
 
-    private boolean effective;
+    private Integer effective;
 
     @ElementCollection
     private List<String> albums;
