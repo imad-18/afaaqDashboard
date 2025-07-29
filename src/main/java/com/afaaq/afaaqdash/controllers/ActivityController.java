@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,6 +36,25 @@ public class ActivityController {
         System.out.println("Activity updated");
         activityService.updateActivityFct(activity);
         return ResponseEntity.ok().body(Map.of("message", "Activity with %s updated successfully !".formatted(id)));
+    }
+
+    // Get All updates
+    @GetMapping("/activities")
+    public List<Activity> getAllActivities() {
+        return activityService.getAllActivitiesFct();
+    }
+
+    // Get Activity by name
+    @GetMapping("/activity/title/{title}")
+    public List<Activity> getActivitiesByTitle(@PathVariable String title) {
+        List<Activity> myActivities = activityService.getActivitiesByTitleFct(title);
+        return myActivities;
+    }
+
+    // Get Activity by category
+    @GetMapping("/activity/category/{category}")
+    public List<Activity> getActivitiesByCategory(@PathVariable String category) {
+        return activityService.getActivitiesByCategoryFct(category);
     }
 
 }

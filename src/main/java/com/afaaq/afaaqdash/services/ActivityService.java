@@ -44,4 +44,19 @@ public class ActivityService {
 
         return activityRepo.save(activity2);
     }
+
+    // Get all activities
+    public List<Activity> getAllActivitiesFct() {
+        return activityRepo.findAll();
+    }
+
+    // Get activity by title
+    public List<Activity> getActivitiesByTitleFct(String title) {
+        return activityRepo.findByTitle(title);
+    }
+
+    // Get activity by category
+    public List<Activity> getActivitiesByCategoryFct(String category) {
+        return activityRepo.findByCategory(category);
+    }
 }
