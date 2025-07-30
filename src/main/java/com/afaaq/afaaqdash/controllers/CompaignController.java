@@ -11,12 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/campaigns")
 public class CompaignController {
     @Autowired
     private CompaignService compaignService;
 
     //create compaign API
-    @PostMapping("/saveCompaign")
+    @PostMapping
     public Compaign createCompaign(@RequestBody Compaign compaign) {
         System.out.println("Received admin: " + compaign);
         return compaignService.saveCompaign(compaign);
@@ -36,21 +37,21 @@ public class CompaignController {
     }*/
 
     // Get all compaigns
-    @GetMapping("/compaigns")
+    @GetMapping
     public List<Compaign> getAllCompaigns() {
         List<Compaign> myCompaigns = compaignService.getCompaigns();
         return myCompaigns;
     }
 
     // Get compaign by name
-    @GetMapping("/compaign/{name}")
+    @GetMapping("{name}")
     public List<Compaign> getCompaignsByName(@PathVariable String name) {
         List<Compaign> myCompaigns = compaignService.getCompaignByName(name);
         return myCompaigns;
     }
 
     // Update compaign
-    @PutMapping("/compaign/{id}")
+    @PutMapping("{id}")
     public Compaign updateCompaign(@PathVariable int id, @RequestBody Compaign compaign) {
         return compaignService.updateCompaign(compaign);
     }

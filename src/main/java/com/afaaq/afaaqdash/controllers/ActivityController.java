@@ -11,19 +11,20 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/activities")
 public class ActivityController {
     @Autowired
     private ActivityService activityService;
 
     // create new activity
-    @PostMapping("/activity")
+    @PostMapping
     public Activity createActivity(@RequestBody Activity activity) {
         System.out.println("Activity created");
         return activityService.saveActivity(activity);
     }
 
     // Delete activity
-    @DeleteMapping("/activity/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> deleteActivityById(@PathVariable int id) {
         System.out.println("Activity deleted");
         activityService.deleteActivityByIdFct(id);
@@ -31,7 +32,7 @@ public class ActivityController {
     }
 
     // Update activity
-    @PutMapping("/activity/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Map<String, String>> updateActivityById(@PathVariable int id, @RequestBody Activity activity) {
         System.out.println("Activity updated");
         activityService.updateActivityFct(activity);
@@ -39,20 +40,20 @@ public class ActivityController {
     }
 
     // Get All updates
-    @GetMapping("/activities")
+    @GetMapping
     public List<Activity> getAllActivities() {
         return activityService.getAllActivitiesFct();
     }
 
     // Get Activity by name
-    @GetMapping("/activity/title/{title}")
+    @GetMapping("/title/{title}")
     public List<Activity> getActivitiesByTitle(@PathVariable String title) {
         List<Activity> myActivities = activityService.getActivitiesByTitleFct(title);
         return myActivities;
     }
 
     // Get Activity by category
-    @GetMapping("/activity/category/{category}")
+    @GetMapping("/category/{category}")
     public List<Activity> getActivitiesByCategory(@PathVariable String category) {
         return activityService.getActivitiesByCategoryFct(category);
     }
