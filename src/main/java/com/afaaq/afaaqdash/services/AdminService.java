@@ -1,7 +1,7 @@
 package com.afaaq.afaaqdash.services;
 
 import com.afaaq.afaaqdash.entities.Admin;
-import com.afaaq.afaaqdash.repository.AdminRepo;
+import com.afaaq.afaaqdash.repositories.AdminRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

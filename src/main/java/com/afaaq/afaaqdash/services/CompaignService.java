@@ -1,8 +1,7 @@
 package com.afaaq.afaaqdash.services;
 
 import com.afaaq.afaaqdash.entities.Compaign;
-import com.afaaq.afaaqdash.repository.CompaignRepo;
-import jakarta.persistence.EntityNotFoundException;
+import com.afaaq.afaaqdash.repositories.CompaignRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

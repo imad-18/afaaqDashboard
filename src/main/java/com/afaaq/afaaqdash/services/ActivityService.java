@@ -1,7 +1,7 @@
 package com.afaaq.afaaqdash.services;
 
 import com.afaaq.afaaqdash.entities.Activity;
-import com.afaaq.afaaqdash.repository.ActivityRepo;
+import com.afaaq.afaaqdash.repositories.ActivityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -20,26 +20,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    // User Creation
-    @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-
-        // InMemoryUserDetailsManager setup with two users
-        UserDetails admin = User.withUsername("Amiya")
-                .password(encoder.encode("123"))  // <-- Encode the password
-                .build();
-
-        return new InMemoryUserDetailsManager(admin);
-    }
-
     // Configuring HttpSecurity
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login",
-                                "/auth/save-admin",
+                        .requestMatchers("/auth/**",
                                 "/campaigns/**",
                                 "/activities/**").permitAll()
                         .anyRequest().authenticated()

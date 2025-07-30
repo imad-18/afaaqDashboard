@@ -1,4 +1,4 @@
-package com.afaaq.afaaqdash.repository;
+package com.afaaq.afaaqdash.repositories;
 
 import com.afaaq.afaaqdash.entities.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
