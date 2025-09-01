@@ -3,6 +3,7 @@ package com.afaaq.afaaqdash.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,4 +24,8 @@ public class Compaign {
 
     @ElementCollection
     private List<String> imagesPath;
+
+    @OneToMany(mappedBy = "compaign", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Statistic> statistics = new ArrayList<>();
+
 }
