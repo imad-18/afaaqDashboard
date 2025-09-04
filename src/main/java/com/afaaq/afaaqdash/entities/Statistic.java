@@ -1,5 +1,6 @@
 package com.afaaq.afaaqdash.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,7 @@ public class Statistic {
 
     @ManyToOne
     @JoinColumn(name = "compaign_id", nullable = false)
+    @JsonBackReference
     private Compaign compaign;
 
     @OneToMany(mappedBy = "statistic", cascade = CascadeType.ALL, orphanRemoval = true)

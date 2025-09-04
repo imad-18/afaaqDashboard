@@ -1,5 +1,6 @@
 package com.afaaq.afaaqdash.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,6 +27,6 @@ public class Compaign {
     private List<String> imagesPath;
 
     @OneToMany(mappedBy = "compaign", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Statistic> statistics = new ArrayList<>();
-
 }
