@@ -1,5 +1,6 @@
 package com.afaaq.afaaqdash.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,6 +43,7 @@ public class Statistic {
     private Compaign compaign;
 
     @OneToMany(mappedBy = "statistic", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<StatisticAttribute> attributes = new ArrayList<>();
 }
 

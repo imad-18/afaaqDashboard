@@ -28,7 +28,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**",
                                 "/campaigns/**",
-                                "/activities/**").permitAll()
+                                "/activities/**",
+                                "/statistics/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.disable());
