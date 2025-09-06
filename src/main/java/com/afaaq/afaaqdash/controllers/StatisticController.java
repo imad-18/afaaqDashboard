@@ -1,5 +1,6 @@
 package com.afaaq.afaaqdash.controllers;
 
+import com.afaaq.afaaqdash.dto.StatisticResponseDTO;
 import com.afaaq.afaaqdash.entities.Statistic;
 import com.afaaq.afaaqdash.services.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,19 @@ public class StatisticController {
 
     // get all statistics api
     @GetMapping
-    public List<Statistic> getAllStatistics() {
-        return statisticService.getAllStatistics();
+    public List<StatisticResponseDTO> getAllStatistics() {
+        /*return statisticService.getAllStatistics();*/
+        return statisticService.getAllStatistics().stream()
+                .map(stat -> {
+                    StatisticResponseDTO dto = new StatisticResponseDTO();
+                    dto.setId(stat.getId());
+                    dto.setYearEdition(stat.getYearEdition());
+                    dto.setCompaignId(stat.getCompaign().getId());
+                    dto.setCompaignTitle(stat.getCompaign().getTitle());
+                    dto.setAttributes(stat.getAttributes());
+                    return dto;
+                })
+                .toList();
     }
 
 
