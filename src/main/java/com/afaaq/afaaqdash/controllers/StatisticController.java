@@ -4,10 +4,12 @@ import com.afaaq.afaaqdash.dto.StatisticResponseDTO;
 import com.afaaq.afaaqdash.entities.Statistic;
 import com.afaaq.afaaqdash.services.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/statistics")
@@ -36,6 +38,13 @@ public class StatisticController {
                     return dto;
                 })
                 .toList();
+    }
+
+    // delete statistic by id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, String>> deleteStatistic(@PathVariable int id) {
+        statisticService.deleteStatisticById(id);
+        return ResponseEntity.ok().body(Map.of("message", "statistic deleted successfully !"));
     }
 
 

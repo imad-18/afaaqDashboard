@@ -21,4 +21,9 @@ public class StatisticService {
     public List<Statistic> getAllStatistics() {
         return StatisticRepo.findAll();
     }
+
+    // delete statistic by id
+    public void deleteStatisticById(int statID) {
+        StatisticRepo.deleteById(statID);
+    }
 }
