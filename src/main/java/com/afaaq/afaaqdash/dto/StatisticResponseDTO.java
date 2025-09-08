@@ -12,7 +12,10 @@ public class StatisticResponseDTO {
     private int id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date yearEdition;
-    private int compaignId;
+    private Integer compaignId;
     private String compaignTitle;
+
+    private Integer activityId;
+    private String activityTitle;
     private List<StatisticAttribute> attributes;
 }

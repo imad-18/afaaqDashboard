@@ -1,5 +1,6 @@
 package com.afaaq.afaaqdash.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,5 +42,9 @@ public class Activity {
     private List<String> albums;
 
     private String category;
+    @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
+    @JsonManagedReference("activity-statistics")
+    private List<Statistic> statistics;
+
 }
 

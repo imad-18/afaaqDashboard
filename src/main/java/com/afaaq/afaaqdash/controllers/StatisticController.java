@@ -5,7 +5,6 @@ import com.afaaq.afaaqdash.entities.Statistic;
 import com.afaaq.afaaqdash.services.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +18,8 @@ public class StatisticController {
 
     // create statistic api
     @PostMapping
-    public Statistic addStatistic(@RequestBody Statistic statistic) {
-        return statisticService.saveStatistic(statistic);
+    public Statistic addStatistic(@RequestBody Statistic statDto) {
+        return statisticService.saveStatistic(statDto);
     }
 
     // get all statistics api
@@ -32,8 +31,10 @@ public class StatisticController {
                     StatisticResponseDTO dto = new StatisticResponseDTO();
                     dto.setId(stat.getId());
                     dto.setYearEdition(stat.getYearEdition());
-                    dto.setCompaignId(stat.getCompaign().getId());
-                    dto.setCompaignTitle(stat.getCompaign().getTitle());
+                    dto.setCompaignId(stat.getCompaign() != null ? stat.getCompaign().getId() : 0);
+                    dto.setCompaignTitle(stat.getCompaign() != null ? stat.getCompaign().getTitle() : null);
+                    dto.setActivityId(stat.getActivity() != null ? stat.getActivity().getId() : 0);
+                    dto.setActivityTitle(stat.getActivity() != null ? stat.getActivity().getTitle() : null);
                     dto.setAttributes(stat.getAttributes());
                     return dto;
                 })

@@ -27,6 +27,6 @@ public class Compaign {
     private List<String> imagesPath;
 
     @OneToMany(mappedBy = "compaign", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference("compaign-statistics")
     private List<Statistic> statistics = new ArrayList<>();
 }
