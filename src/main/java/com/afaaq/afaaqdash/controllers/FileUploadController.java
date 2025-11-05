@@ -22,11 +22,11 @@ public class FileUploadController {
 
     @PostMapping("/upload")
     public ResponseEntity<Map<String, String>> uploadFile(
-            @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "userId", required = false) String userId,
-            @RequestParam(value = "category", required = false) String category) {
+            @RequestParam("file") MultipartFile file
+            /*@RequestParam(value = "userId", required = false) String userId,
+            @RequestParam(value = "category", required = false) String category*/) {
         try {
-            String relativeUrl = storageService.store(file, userId, category);
+            String relativeUrl = storageService.store(file, null, null);
             return ResponseEntity.ok(Map.of(
                     "fileUrl", relativeUrl,
                     "originalName", file.getOriginalFilename()
